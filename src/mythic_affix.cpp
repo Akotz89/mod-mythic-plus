@@ -91,10 +91,11 @@ void HealthIncreaseAffix::HandleStaticEffect(Creature* creature)
     ASSERT(creatureData);
 
     uint32 newMaxHealth = creatureData->originalMaxHealth + (uint32)(healthMod * creatureData->originalMaxHealth);
+    float const healthPct = creature->GetHealthPct();
     creature->SetCreateHealth(newMaxHealth);
     creature->SetMaxHealth(newMaxHealth);
     creature->SetStatFlatModifier(UNIT_MOD_HEALTH, BASE_VALUE, (float)newMaxHealth);
-    creature->SetHealth(newMaxHealth * (creature->GetHealthPct() / 100));
+    creature->SetHealth(creature->GetMaxHealth() * (healthPct / 100));
     creature->ResetPlayerDamageReq();
 }
 
@@ -224,13 +225,16 @@ void LightningSphereAffix::HandlePeriodicEffectMap(Map* map, uint32 diff)
     if (!sMythicPlus->IsMapInMythicPlus(map))
         return;
 
+    MythicPlus::MapData* mapData = sMythicPlus->GetMapData(map, false);
+    ASSERT(mapData);
+    uint32& spawnTimer = mapData->lightningSphereTimers[this];
+
     if (spawnTimer >= spawnTimerEnd)
     {
         spawnTimer = 0;
 
         if (roll_chance_f(chanceOfSpawn))
         {
-            MythicPlus::MapData* mapData = sMythicPlus->GetMapData(map, false);
             // don't try to spawn spheres if the dungeon is finished
             if (mapData->done)
                 return;

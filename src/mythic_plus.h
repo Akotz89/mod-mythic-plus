@@ -6,6 +6,7 @@
 #define _MYTHIC_PLUS_H_
 
 #include <random>
+#include <unordered_map>
 #include "Player.h"
 
 class MythicAffix;
@@ -48,6 +49,7 @@ public:
         long long keystoneTimer = 0;
         uint32 keystoneLevel = 0;
         uint64 updateTimer = 0;
+        std::unordered_map<MythicAffix const*, uint32> lightningSphereTimers;
         bool receiveLoot = true;
         bool done = false;
         uint32 timeLimit = 0;

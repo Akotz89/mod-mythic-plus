@@ -169,7 +169,6 @@ public:
 class LightningSphereAffix : public MythicAffix
 {
 private:
-    uint32 spawnTimer = 0;
     uint32 spawnTimerEnd = 0;
     float chanceOfSpawn = 0;
 public:
