@@ -46,7 +46,7 @@ public:
         }
 
         if (sMythicPlus->CanMapBeMythicPlus(map))
-        { 
+        {
             if (savedDungeon != nullptr)
             {
                 if (!savedDungeon->isMythic)
@@ -173,7 +173,7 @@ public:
                 if (mapData != nullptr && mapData->keystoneTimer > 0 && mapData->mythicPlusStartTimer == 0)
                 {
                     uint32 instanceId = map->GetInstanceId();
-                    
+
                     if (instanceTimer[instanceId] > MythicPlus::KEYSTONE_START_TIMER)
                     {
                         const MythicPlus::MythicPlusDungeonInfo* dsave = sMythicPlus->GetSavedDungeonInfo(instanceId);
