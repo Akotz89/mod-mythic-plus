@@ -177,7 +177,7 @@ public:
             // prevent cases like Drak'Tharon Keep where dungeon mobs kill each other at the start
             if (killer->ToCreature() != nullptr && !killer->IsControlledByPlayer())
                 return;
-        
+
             MythicPlus::MapData* mapData = sMythicPlus->GetMapData(map);
             // check if a creature was killed by a player and we can be in a M+ dungeon but it was not yet started,
             // in which case we mark this dungeon as non M+

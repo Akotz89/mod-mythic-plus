@@ -37,7 +37,7 @@ public:
                 sMythicPlus->StoreOriginalCreatureData(creature);
 
                 creatureData->processed = true;
-                sMythicPlus->ProcessStaticAffixes(mapData->mythicLevel, creature);  
+                sMythicPlus->ProcessStaticAffixes(mapData->mythicLevel, creature);
             }
         }
     }

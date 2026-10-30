@@ -1061,7 +1061,7 @@ void MythicPlus::ScaleCreature(Creature* creature)
 
     bool boss = IsBoss(creature);
     Map* map = creature->GetMap();
-    const MapScale* mapScale = GetMapScale(map);   
+    const MapScale* mapScale = GetMapScale(map);
     if (mapScale != nullptr)
         creatureData->extraDamageMultiplier = boss ? mapScale->bossDmgScale : mapScale->trashDmgScale;
 
@@ -1081,7 +1081,7 @@ void MythicPlus::ScaleCreature(Creature* creature)
     creature->SetLevel(chosenLevel);
 
     uint8 exp = EXPANSION_WRATH_OF_THE_LICH_KING; // all mobs should scale to WOTLK expansion
-    
+
     uint32 hpMod = boss ? urand(20, 21) : 4;
     if (map->IsHeroic())
         hpMod = boss ? urand(30, 31) : 5;
