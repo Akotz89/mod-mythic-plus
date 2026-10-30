@@ -2,7 +2,17 @@ name: Codestyle Checks
 on:
   push:
   pull_request:
-
+permissions:
+  contents: read
 jobs:
   codestyle:
-    uses: azerothcore/reusable-workflows/.github/workflows/codestyle_modules.yml@main
+    name: Check Codestyling
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: azerothcore/reusable-workflows
+          ref: f8a150944055bb7e481c0e25eb30be6dbf67a217
+          path: reusable-workflows
+      - run: bash reusable-workflows/apps/ci/ci-codestyle.sh src
